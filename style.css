@@ -76,9 +76,20 @@ h3 {
     margin: 0;
 }
 
+h4 {
+    font-family: monospace;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin: 0;
+    margin-top: 20px; 
+    margin-right: 100px;
+    
+}
+
 a {
     color: white;
     text-decoration: none;
+    font-family: monospace;
 }
 
 section {
@@ -196,14 +207,14 @@ section.services .text {
     border-radius: var(--border-radius);
 }
 
-section.services p {
+section.services h4 {
     font-size: 20px;
     opacity: 0;
-    transition: opacity 5s ease-in-out;
+    transition: opacity 4s ease-in-out;
     
 }
 
-section.services:has(figure img:hover) p {
+section.services:has(figure img:hover) h4{
     opacity: 1;
 }
 
@@ -228,10 +239,3 @@ section.services figure img:hover {
     cursor: url("img/crosshair4.png") 24 24, auto;
     transition: 5s ease-in-out;
 }
-
-
-
-
-
-
-

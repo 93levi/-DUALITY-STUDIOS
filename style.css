@@ -15,9 +15,9 @@
 }
 
 html, body {
-
     --border-radius: 100px;
-
+    --radius-left: 100px 0 0 100px; 
+    --radius-right: 0 100px 100px 0;
     margin: 5;
     padding: 5;
     background: black;
@@ -32,13 +32,16 @@ section {
     height: 100vh;
 }
 
+
  nav {
     position: fixed;
     width: 100%;
     height: 100px;
+    margin-top: 4px; 
     top: 0;
     left: 0;
     font-size: 20px;
+    z-index: 9999;  
 }
 
 nav ul {
@@ -77,13 +80,10 @@ h3 {
 }
 
 h4 {
-    font-family: monospace;
     font-size: 16px;
-    text-transform: uppercase;
     margin: 0;
     margin-top: 20px; 
     margin-right: 100px;
-    
 }
 
 a {
@@ -99,7 +99,12 @@ section {
     height: calc(100vh - 100px);
     top: 100px;
     z-index: 2;
+    padding: 50px;
+    border: 20px;
+    
 }
+
+
 
 section.sticky {
     position: sticky;
@@ -120,6 +125,7 @@ section.about article {
     align-items: center;
     border-radius: var(--border-radius);
     padding: 3.25vw;
+    
 }
 
 section.about article .title {
@@ -132,6 +138,8 @@ section.about article .title {
 
 section.about article .title h3 {
     align-items: end;
+    margin-bottom: 140px;
+    margin-left: 10px;
 }
 
 section.about article .description {
@@ -150,7 +158,33 @@ section.empty article h1 {
     list-style: none;
 }
 
-/* ANIMATIONS */
+/* Unmute button */
+
+#unmute {
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    z-index: 9999;
+    background: black;
+    color: white;
+    border: 1px solid white;
+    padding: 8px 16px;
+    font-family: monospace;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 14px;
+    margin-right: 55px;
+  }
+  
+  #unmute:hover {
+    background: white;
+    color: black;
+  }
+  
+  #pic1 {
+    margin-top: 50px;
+  }
+
 
 section.services figure img {
     animation-name: float;
@@ -158,6 +192,7 @@ section.services figure img {
     animation-iteration-count: infinite;
     animation-direction: alternate;
     animation-timing-function: cubic-bezier(.77,.28,.42,.93);
+    
 }
 
 section.services{
@@ -169,7 +204,6 @@ section.services:has(figure img:hover) {
     filter: invert(1);
     cursor: url("img/crosshair4.png") 24 24, auto;
 }
-
 
 @keyframes float {
     0% {
@@ -193,7 +227,7 @@ section.services figure {
     flex-basis: 56.25vw;
     margin: 0;
     background:black;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-left);
 }
 
 
@@ -204,11 +238,11 @@ section.services .text {
     flex-basis: 43.75vw;
     background: black;
     padding: 3.125vw;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-right);
 }
 
 section.services h4 {
-    font-size: 20px;
+    font-size: 16px;
     opacity: 0;
     transition: opacity 4s ease-in-out;
     
@@ -218,7 +252,6 @@ section.services:has(figure img:hover) h4{
     opacity: 1;
 }
 
-/* Parent inverts ONLY when image hovered */
 section.services:has(figure img:hover) {
     
     filter: invert(1);
@@ -239,3 +272,273 @@ section.services figure img:hover {
     cursor: url("img/crosshair4.png") 24 24, auto;
     transition: 5s ease-in-out;
 }
+
+
+/* dropdown menu */
+
+/* Contact dropdown container */
+.nav-contact {
+    position: relative;
+    margin-left: 100px; /* keep your nav spacing consistent */
+  }
+  
+  /* Contact button */
+  .nav-contact button {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 8px 16px;
+    font-family: monospace;
+    font-size: 14px;
+    cursor: pointer;
+    line-height: 1;
+    border-radius: 14px;
+  }
+  
+  /* Dropdown menu */
+  /* CONTACT DROPDOWN — MATCH UNMUTE BUTTON STYLE */
+
+/* Container */
+.nav-contact {
+    position: relative;
+  }
+  
+  /* Contact button matches EXACTLY the unmute button */
+  .nav-contact button {
+    background: black;
+    color: white;
+    border: 1px solid white;
+    padding: 8px 16px;
+    font-family: monospace;
+    font-size: 14px;
+    cursor: pointer;
+    line-height: 1;
+    border-radius: 14px;
+  }
+  
+  /* Hover matches unmute hover */
+  .nav-contact button:hover {
+    background: white;
+    color: black;
+    cursor: url("img/crosshair4.png") 24 24, auto;
+  }
+  
+  /* Dropdown panel */
+  .contact-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 8px;
+  
+    background: black;
+    border: 1px solid white;
+    border-radius: 14px;
+  
+    display: none;
+    flex-direction: column;
+  
+    width: 100%; 
+    z-index: 10000;
+  }
+  
+  /* When open */
+  .contact-menu.open {
+    display: flex;
+  }
+  
+  /* Links inside dropdown */
+  .contact-menu a {
+    color: white;
+    text-decoration: none;
+    font-family: monospace;
+    font-size: 14px;
+    padding: 8px 16px;
+    display: block;
+    cursor: pointer;
+    
+  }
+  
+  /* Hover matches button hover */
+  .contact-menu a:hover {
+    background: white;
+    color: black;
+    cursor: url("img/crosshair4.png") 24 24, auto;
+  }
+  
+
+/* Glitch effect */
+
+#servicesTitle {
+    position: relative;
+    display: inline-block;
+  }
+  
+  
+  #servicesTitle:hover {
+    color: transparent;
+  }
+  
+  
+  #servicesTitle:hover::after {
+    content: "Duality Studios";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    pointer-events: none;
+  }
+  
+#servicesTitle {
+    position: relative;
+    display: inline-block;
+    overflow: visible;
+  }
+  
+  #servicesTitle:hover {
+    color: transparent;
+    cursor: url("img/crosshair4.png") 24 24, auto;
+  }
+  
+  #servicesTitle:hover::after,
+  #servicesTitle:hover::before {
+    content: "Duality Studios";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: inherit;
+    font-family: inherit;
+    pointer-events: none;
+  }
+  
+  #servicesTitle:hover::before {
+    color: #6EF0B5;
+    animation: glitch1 0.3s infinite;
+  }
+  
+  #servicesTitle:hover::after {
+    color: #00E8FF;
+    animation: glitch2 0.3s infinite;
+  }
+  
+  @keyframes glitch1 {
+    0% { transform: translate(0,0); opacity: 1; }
+    20% { transform: translate(-3px,3px); }
+    40% { transform: translate(3px,-2px); }
+    60% { transform: translate(-2px,-3px); opacity: 0.8; }
+    80% { transform: translate(2px,2px); }
+    100% { transform: translate(0,0); opacity: 1; }
+  }
+  
+  @keyframes glitch2 {
+    0% { transform: translate(0,0); opacity: 1; }
+    20% { transform: translate(3px,-3px); }
+    40% { transform: translate(-3px,2px); opacity: 0.7; }
+    60% { transform: translate(2px,3px); }
+    80% { transform: translate(-2px,-2px); }
+    100% { transform: translate(0,0); opacity: 1; }
+  }
+  
+#servicesTitle,
+#creatorGlitch {
+  position: relative;
+  display: inline-block;
+  overflow: visible;
+}
+
+#servicesTitle:hover,
+#servicesTitle:hover + #creatorGlitch {
+  color: transparent;
+}
+
+#servicesTitle:hover::before,
+#servicesTitle:hover::after,
+#servicesTitle:hover + #creatorGlitch::before,
+#servicesTitle:hover + #creatorGlitch::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  font-size: inherit;
+  font-family: inherit;
+  pointer-events: none;
+}
+
+#servicesTitle:hover::before,
+#servicesTitle:hover::after {
+  content: "Duality Studios";
+  
+}
+
+#servicesTitle:hover + #creatorGlitch::before,
+#servicesTitle:hover + #creatorGlitch::after {
+  content: "By Jordan Levi Sax";
+}
+
+#servicesTitle:hover::before,
+#servicesTitle:hover + #creatorGlitch::before {
+  color: #66FFCC;
+  animation: glitch1 0.3s infinite;
+}
+
+#servicesTitle:hover::after,
+#servicesTitle:hover + #creatorGlitch::after {
+  color: #8EF6D2;
+  animation: glitch2 0.3s infinite;
+}
+
+#servicesTitle:hover + #creatorGlitch {
+    transform: translateX(40px);
+  }
+
+.typewriter::after {
+    content: "|";
+    margin-left: 4px;
+    animation: blink 1s step-end infinite;
+  }
+  
+@keyframes blink {
+    50% { opacity: 0; }
+  }
+  
+#unmute:hover {
+    cursor: url("img/crosshair4.png") 24 24, auto;
+  }
+
+
+  
+  
+/* track info animation */  
+
+  #trackInfo {
+    position: fixed;
+    top: 49px;
+    right: 185px;
+    z-index: 9999;
+  
+    font-size: 11px;
+    font-family: monospace;
+    color: white;
+  
+    white-space: pre;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  
+  #trackInfo::after {
+    content: "▶";
+    margin-left: 8px;
+    animation: blinkPlay 1s step-end infinite;
+    display: inline-block;
+    transform: translateY(1px);
+  }
+  
+  @keyframes blinkPlay {
+    50% { opacity: 0; }
+  }
+  

@@ -3,57 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>二面性</title>
-
-
-    
-
-
-    <link rel="stylesheet" href="style.css">
-    
-   
-
-    
+    <title>二面性製作所</title>
+    <link rel="icon" type="img/favicon/jpg" href="img/favicon.png">
+    <link rel="stylesheet" href="style.css"> 
 </head>
 
 <body>
     
     <nav>
         <ul>
-            <li> <a href="about"> </a>About</li>
-            <li> <a href="services"> </a>Services</li>
-            <li> <a href="contact"> </a>Contact</li>
+            
+            
+            <li class="nav-contact">
+                <button type="button" id="contactToggle">Contact ▾</button>
+                <div class="contact-menu" id="contactMenu">
+                  <a href="mailto:iceblastmgmt@gmail.com">Email</a>
+                  <a href="https://instagram.com/absol.live" target="_blank">Instagram</a>
+                  <a href="https://github.com/93levi" target="_blank">Github</a>
+                </div>
+              </li>
         </ul>
     </nav>
+
+    <audio id="bgmusic" src="music/滝.mp3" preload="auto" loop></audio>
+    <button id="unmute">Unmute</button>
+    <div id="trackInfo"></div>
 
     
     <section id="about" class="about sticky">
         <div class="empty"></div>
         <article>
             <div class="title">
-                <h1>二面性製作所　</h1>
-                <h3>ジョーダン・リヴァイ・サックス 製作
-                    By Jordan Levi Sax
-                </h3>
+                <h1 id="servicesTitle">二面性<br>製作所</h1>
+                <h3 id="creatorGlitch">製作<br>
+                    ジョーダン<br>リヴァイ<br>サックス</h3>
+                    
+              
             </div>
             <div class="description">
-                <h3>
-                    Duality Studios by Jordan Levi Sax is a creative studio aimed at designing and implementing cutting-edge, avant-garde digital experiences for artists and brands.
+                <h3 id="aboutText">
+                    Duality Studios by Jordan Levi Sax is a project aimed at designing and implementing cutting-edge, avant-garde digital experiences for artists and brands. Scroll down to learn more.
                 </h3>
             </div>
         </article>
     </section>
 
     
-    <section id="services" class="services services-creative sticky">
+    <section id="services1" class="services services-creative sticky">
         <figure>
-            <img src="img/技術性.png" width="400"/>
+            <img id="pic1" src="img/技術性.png" width="400"/>
         </figure>
 
         <div class="text">
             <h2>独創性｜技術性 </h2>
             <h3>Creativity | Technicality</h3>
-            <h4>Jordan is a multidisciplinary creative with work ranging from creative direction to music production. In the last year of his computer science degree, Jordan is working to bring these two worlds of creativity and technicality into his pursuit of web design and development.
+            <h4>Im a multidisciplinary creative with work ranging from creative direction for fashion editorials and events with ABSOL to music production with Clipp Art Records. In the final year of my QUT computer science degree, I'm working to merge these two worlds of creativity and technicality into my pursuit of using design and web development to create interactive experiences for artists and fashion labels.</h4>
             </h4>
             <a href="htpps://wifipedia.com"></a>
         </div>
@@ -61,7 +65,7 @@
     </section>
 
     
-    <section id="services" class="services services-phyical sticky">
+    <section id="services2" class="services services-phyical sticky">
         <figure>
             <img src="img/魚.png" width="450"/>
         </figure>
@@ -69,7 +73,7 @@
         <div class="text">
             <h2>日本語｜母国語  </h2>
             <h3>Japanese | English</h3>
-            <h4> Jordan is a native English speaker and is also fluent in Japanese, holding the JLPT N2 certification and currently working towards N1.
+            <h4> After completing an exchange program at Meiji University in Tokyo as a New Colombo Plan Scholarship recipient, I was able to achieve fluency in Japanese, passing the Japanese Language Proficiency Test N2, a benchmark for high-level fluency and industry level comprehension. I hope to use these skills and connections in the Tokyo fashion scene to collaborate with local brands on cutting-edge digital experiences.</h4>
             </h4>
             <a href="htpps://wifipedia.com"></a>
         </div>
@@ -77,7 +81,7 @@
     </section>
 
     
-    <section id="services" class="services services trend sticky">
+    <section id="services3" class="services services trend sticky">
         <figure>
             <img src="img/地球.png" width="500"/>
         </figure>
@@ -85,19 +89,168 @@
         <div class="text">
             <h2>風潮的｜懐古的 </h2>
             <h3>Futurism | Nostalgia</h3>
-            <h4> Jordan’s love for web design is rooted in yet another duality, that of nostalgia and futurism. He aims to take the ethereal energy of 2000s flash websites and translate it into a modern framework.
-            </h4>
-            <a href="htpps://wifipedia.com"></a>
+            <h4> Through all of my work, whether it be music or creative direction, I always weave in themes of retro-futurism. My love for web design is also rooted in this duality. I aim to take the ornate design and ethereal energy of early-2000s Flash websites and translate them into a modern framework. Im currently working with Sydney-based fashion label From The 13th to create a digital look-book experience for their new collection that will aim to incorporate this duality. </h4>
         </div>
 
     </section>
 
-    <section id="contact" class="contact sticky">
-        <a href="iceblastmgmt@gmail.com">contact: iceblastmgmt@gmail.com</a>
-    </section>
+    
 
 
     
 
-</body>
-</html>
+
+
+
+
+    <script>
+        function typewriter(el, text, speed = 30) {
+          let i = 0;
+          function step() {
+            el.textContent = text.slice(0, i);
+            i++;
+            if (i <= text.length) {
+              setTimeout(step, speed);
+            }
+          }
+          step();
+        }
+      
+        window.addEventListener("DOMContentLoaded", () => {
+          // --------- 1) ABOUT TEXT (Duality paragraph) ----------
+          const aboutEl = document.getElementById("aboutText");
+          if (aboutEl) {
+            const fullText = aboutEl.textContent.trim();
+      
+            const fixedHeight = aboutEl.offsetHeight;
+            aboutEl.style.height = fixedHeight + "px";
+      
+            aboutEl.classList.add("typewriter");
+            aboutEl.textContent = "";
+      
+            setTimeout(() => {
+              typewriter(aboutEl, fullText, 30);
+            }, 2000);
+          }
+      
+          // --------- 2) SERVICES H4s (hover to type) ----------
+          document.querySelectorAll("section.services h4").forEach(h4 => {
+            const full = h4.textContent.trim();
+            h4.dataset.fulltext = full;
+      
+            const fixedHeight = h4.offsetHeight;
+            h4.style.height = fixedHeight + "px";
+      
+            // 🔥 add cursor class here too
+            h4.classList.add("typewriter");
+      
+            h4.textContent = "";
+          });
+      
+          document.querySelectorAll("section.services figure img").forEach(img => {
+            img.addEventListener("mouseenter", () => {
+              const section = img.closest("section.services");
+              if (!section) return;
+      
+              const h4 = section.querySelector("h4");
+              if (!h4 || h4.dataset.typed === "true") return;
+      
+              h4.dataset.typed = "true";
+              h4.style.opacity = "1";
+      
+              setTimeout(() => {
+                typewriter(h4, h4.dataset.fulltext, 25);
+              }, 2000);
+            });
+          });
+        });
+      </script>
+      
+      
+
+      <script>
+        window.addEventListener('DOMContentLoaded', () => {
+          const audio = document.getElementById('bgmusic');
+          const btn = document.getElementById('unmute');
+          const info = document.getElementById('trackInfo');
+      
+          const message = "The following composition was written, produced, mixed and mastered by Jordan Levi Sax | 'Taki' : Now Playing |  ";
+      
+          // Start muted & paused
+          audio.muted = true;
+          audio.pause();
+          btn.textContent = 'Unmute';
+      
+          let typing = false;
+      
+          function typeInfoText() {
+            // allow re-typing each time we unmute
+            typing = true;
+      
+            info.textContent = "";
+            info.style.opacity = "1";
+      
+            let i = 0;
+            const speed = 40;
+      
+            function typeChar() {
+              info.textContent = message.slice(0, i);
+              i++;
+              if (i <= message.length && typing) {
+                setTimeout(typeChar, speed);
+              }
+            }
+      
+            typeChar();
+          }
+      
+          btn.addEventListener('click', () => {
+            if (audio.muted) {
+              // UNMUTE + PLAY
+              audio.muted = false;
+              audio.currentTime = 0;
+              audio.play().catch(err => console.log('Play blocked:', err));
+      
+              btn.textContent = 'Mute';
+      
+              // restart typing fresh on every unmute
+              typeInfoText();
+      
+            } else {
+              // MUTE + PAUSE
+              audio.muted = true;
+              audio.pause();
+      
+              btn.textContent = 'Unmute';
+      
+              // hide + reset typing state so it can run again next time
+              typing = false;
+              info.style.opacity = "0";
+              info.textContent = "";
+            }
+          });
+        });
+      </script>
+      
+
+      
+      <script>
+        window.addEventListener('DOMContentLoaded', () => {
+          const toggle = document.getElementById('contactToggle');
+          const menu = document.getElementById('contactMenu');
+      
+          if (!toggle || !menu) return;
+      
+          toggle.addEventListener('click', () => {
+            menu.classList.toggle('open');
+          });
+      
+          // optional: close when clicking anywhere else
+          document.addEventListener('click', (e) => {
+            if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+              menu.classList.remove('open');
+            }
+          });
+        });
+      </script>
+    

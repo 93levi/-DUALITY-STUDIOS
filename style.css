@@ -10,7 +10,7 @@
 
 * {
     box-sizing: border-box;
-    cursor: url("img/crosshair3.png") 24 24, auto;
+    cursor: url("img/crosshair3.png") 16 16, auto;
    
 }
 
@@ -18,6 +18,7 @@ html, body {
     --border-radius: 100px;
     --radius-left: 100px 0 0 100px; 
     --radius-right: 0 100px 100px 0;
+    --radius-none: 0;
     margin: 5;
     padding: 5;
     background: black;
@@ -86,9 +87,16 @@ h4 {
     margin-right: 100px;
 }
 
+h5 {
+  font-size: 16px;
+  margin: 0;
+  margin-top: 20px; 
+  margin-right: 100px;
+}
+
 a {
     color: white;
-    text-decoration: none;
+    text-decoration: underline;
     font-family: monospace;
 }
 
@@ -202,7 +210,7 @@ section.services{
 
 section.services:has(figure img:hover) {
     filter: invert(1);
-    cursor: url("img/crosshair4.png") 24 24, auto;
+    cursor: url("img/crosshair4.png") 16 16, auto;
 }
 
 @keyframes float {
@@ -230,7 +238,6 @@ section.services figure {
     border-radius: var(--radius-left);
 }
 
-
 section.services .text {
     display: flex;
     flex-direction: column;
@@ -239,6 +246,11 @@ section.services .text {
     background: black;
     padding: 3.125vw;
     border-radius: var(--radius-right);
+
+}
+
+#alt {
+  border-radius: 0!important;
 }
 
 section.services h4 {
@@ -247,6 +259,8 @@ section.services h4 {
     transition: opacity 4s ease-in-out;
     
 }
+
+
 
 section.services:has(figure img:hover) h4{
     opacity: 1;
@@ -269,102 +283,124 @@ section.contact {
 }
 
 section.services figure img:hover {
-    cursor: url("img/crosshair4.png") 24 24, auto;
+    cursor: url("img/crosshair4.png") 16 16, auto;
     transition: 5s ease-in-out;
 }
 
 
 /* dropdown menu */
+/* Container for nav item */
+.nav-menu {
+  position: relative;
+  margin-left: 100px;
+}
 
+/* Main button (Menu / Contact / Media) */
+.nav-menu > button {
+  background: black;
+  color: white;
+  border: 1px solid white;
+  padding: 8px 16px;
+  font-family: monospace;
+  font-size: 14px;
+  cursor: pointer;
+  line-height: 1;
+  border-radius: 14px;
+}
 
-.nav-contact {
-    position: relative;
-    margin-left: 100px;
-  }
-  
+.nav-menu > button:hover {
+  background: white;
+  color: black;
+  cursor: url("img/crosshair4.png") 16 16, auto;
+}
 
-  .nav-contact button {
-    background: transparent;
-    border: 1px solid white;
-    color: white;
-    padding: 8px 16px;
-    font-family: monospace;
-    font-size: 14px;
-    cursor: pointer;
-    line-height: 1;
-    border-radius: 14px;
-  }
-  
-  /* Dropdown menu */
-  
+/* Panel under the button */
+.menu-panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 8px;
 
+  background: black;
+  border: 1px solid white;
+  border-radius: 14px;
 
-.nav-contact {
-    position: relative;
-  }
-  
+  display: none;           /* hidden by default */
+  flex-direction: column;
+  width: 220px;            /* tweak if needed */
+  z-index: 10000;
+}
 
-  .nav-contact button {
-    background: black;
-    color: white;
-    border: 1px solid white;
-    padding: 8px 16px;
-    font-family: monospace;
-    font-size: 14px;
-    cursor: pointer;
-    line-height: 1;
-    border-radius: 14px;
-  }
-  
+.menu-panel.open {
+  display: flex;
+}
 
-  .nav-contact button:hover {
-    background: white;
-    color: black;
-    cursor: url("img/crosshair4.png") 24 24, auto;
-  }
-  
+/* Generic view container */
+.menu-view {
+  display: none;           /* only one is visible */
+  flex-direction: column;
+}
 
-  .contact-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    margin-top: 8px;
-  
-    background: black;
-    border: 1px solid white;
-    border-radius: 14px;
-  
-    display: none;
-    flex-direction: column;
-  
-    width: 100%; 
-    z-index: 10000;
-  }
-  
+/* Titles inside sub views */
+.menu-title {
+  padding: 8px 16px;
+  font-family: monospace;
+  font-size: 14px;
+  border-bottom: 1px solid white;
+}
 
-  .contact-menu.open {
-    display: flex;
-  }
-  
+/* Root options: Contact | Media */
+.menu-option {
+  background: transparent;
+  border: none;
+  color: white;
+  text-align: left;
+  padding: 8px 16px;
+  font-family: monospace;
+  font-size: 14px;
+  cursor: pointer;
+}
 
-  .contact-menu a {
-    color: white;
-    text-decoration: none;
-    font-family: monospace;
-    font-size: 14px;
-    padding: 8px 16px;
-    display: block;
-    cursor: pointer;
-    
-  }
-  
+.menu-option:hover {
+  background: white;
+  color: black;
+  cursor: url("img/crosshair4.png") 16 16, auto;
+}
 
-  .contact-menu a:hover {
-    background: white;
-    color: black;
-    cursor: url("img/crosshair4.png") 24 24, auto;
-  }
-  
+/* Back button */
+.menu-back {
+  background: transparent;
+  border: none;
+  color: white;
+  text-align: left;
+  padding: 8px 16px;
+  font-family: monospace;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.menu-back:hover {
+  background: white;
+  color: black;
+  cursor: url("img/crosshair4.png") 16 16, auto;
+}
+
+/* Links in views */
+.menu-view a {
+  color: white;
+  text-decoration: none;
+  font-family: monospace;
+  font-size: 14px;
+  padding: 6px 16px;
+  display: block;
+}
+
+.menu-view a:hover {
+  background: white;
+  color: black;
+  cursor: url("img/crosshair4.png") 16 16, auto;
+}
+
 
 /* Glitch effect */
 
@@ -398,7 +434,7 @@ section.services figure img:hover {
   
   #servicesTitle:hover {
     color: transparent;
-    cursor: url("img/crosshair4.png") 24 24, auto;
+    cursor: url("img/crosshair4.png") 16 16, auto;
   }
   
   #servicesTitle:hover::after,
@@ -477,7 +513,8 @@ section.services figure img:hover {
 
 #servicesTitle:hover + #creatorGlitch::before,
 #servicesTitle:hover + #creatorGlitch::after {
-  content: "By Jordan Levi Sax";
+  content: "Designed and engineered by Jordan Levi Sax using HTML, CSS, and JavaScript";
+  left: 25px; 
 }
 
 #servicesTitle:hover::before,
@@ -496,6 +533,9 @@ section.services figure img:hover {
     transform: translateX(40px);
   }
 
+
+
+
 .typewriter::after {
     content: "|";
     margin-left: 4px;
@@ -507,7 +547,7 @@ section.services figure img:hover {
   }
   
 #unmute:hover {
-    cursor: url("img/crosshair4.png") 24 24, auto;
+    cursor: url("img/crosshair4.png") 16 16, auto;
   }
 
 
@@ -517,10 +557,10 @@ section.services figure img:hover {
 
   #trackInfo {
     position: fixed;
-    top: 49px;
+    top: 50px;
     right: 185px;
     z-index: 9999;
-  
+    
     font-size: 11px;
     font-family: monospace;
     color: white;
@@ -543,3 +583,172 @@ section.services figure img:hover {
   }
   
   
+
+/* ========================= */
+/*       CASE STUDY          */
+/* ========================= */
+
+/* ========================= */
+/*       CASE STUDY          */
+/* ========================= */
+
+.case-study {
+  display: flex;
+  width: 100%;
+  background: transparent;
+  color: white;
+  padding: 150px 60px 80px;
+  gap: 80px;
+  position: relative;
+  z-index: 10;
+  height: auto;
+  top: auto;
+}
+
+/* ALL text in case study uses Panchang */
+.case-study h1,
+.case-study h3,
+.case-study h4,
+.case-study h5,
+.case-study p {
+  
+  color: white;
+  line-height: 1.2;
+  margin: 0 0 20px;
+}
+
+.case-study h2 {
+  font-family: monospace;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+
+/* LEFT: sticky column */
+.case-left {
+  flex: 1;
+  position: sticky;
+  top: 110px;
+  align-self: flex-start;
+  background: transparent;
+  font-family: 'Panchang-Medium', sans-serif;
+}
+
+.case-left h1 {
+  font-size: 80px;
+  line-height: 0.9;
+  margin: 0 0 20px;
+}
+
+
+
+.case-left h3 {
+  font-size: 20px;
+  margin: 100px;
+}
+
+/* RIGHT: scrolling content */
+.case-right {
+  background: transparent;
+  flex: 1.4;
+  font-family: monospace;
+}
+
+/* Right column body copy – same size as other sections */
+.case-right p {
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+/* Each scrolling block on the right */
+.case-block {
+  margin-bottom: 200px;
+}
+
+/* Videos */
+.case-video {
+  width: 90%;
+  border-radius: 14px;
+  pointer-events: none;
+  display: block;
+  margin: 0 0 40px 0;   /* remove auto-centering */
+}
+
+.dark-mute {
+  filter: invert(1) brightness(0.75) contrast(0.9);
+}
+
+.light-mute{
+  filter: invert(1) brightness(0.25) contrast(0.9);
+  border-radius: 0 !important;
+}
+
+
+
+
+.mouse{
+  margin-top: 100px;
+  filter: invert(0) brightness(0.45) contrast(0.9);
+}
+
+.mouse:hover {
+  filter: none !important;
+  cursor: default !important;
+}
+
+/* Also prevent this image from activating the parent section hover state */
+.services:has(.mouse:hover) {
+  filter: none !important;
+}
+
+
+.row-mini {
+  display: flex;
+  gap: 20px;        /* space between videos */
+  margin-bottom: 40px;
+  align-items: flex-start;
+}
+
+.video-mini {
+  width: 28%;       /* 3 videos = ~90% total width */
+  border-radius: 14px;
+  pointer-events: none;
+  display: block;
+}
+
+
+.case-textbox {
+  border: 2px solid white;      /* white outline */
+  border-radius: 40px;          /* nice curved edges */
+  padding: 30px 40px;           /* spacing inside box */
+  width: 90%;
+  margin: 30px auto;            /* center + spacing */
+  
+  font-size: 16px;
+  color: white;                 /* keep text white */
+  line-height: 1.4;
+  background: transparent;  
+  
+  margin-left: 10px;
+  
+}
+
+
+.no-radius-section img,
+.no-radius-section figure,
+.no-radius-section .text {
+  border-radius: var(--radius-none); /* = 0 */
+}
+
+#alt .text {
+  border-radius: 0 !important;
+  overflow: visible;        /* <- prevents clipping */
+  
+  padding: 0;
+}
+
+#alt {
+  --border-radius: 0;
+  --radius-left: 0;
+  --radius-right: 0;
+}
